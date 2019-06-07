@@ -1,7 +1,6 @@
 <?php
 class website {
 
-
    /*
       REUSABLE FUNCTIONS.
    */
@@ -22,27 +21,26 @@ class website {
       exit;
    }
 
-	public static function http_request($url, $post = false, $headers = false, $timeout = 2) {
-	   $ch = curl_init();
-	   curl_setopt($ch, CURLOPT_URL, $url);
-	   if ( $post ) {
-	      curl_setopt($ch, CURLOPT_POST,       true);
-	      curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-	   }
-	   if ( $headers ) {
-	      curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-	   }
-	   curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
-	   curl_setopt($ch, CURLOPT_TIMEOUT,        $timeout);
-	   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	   curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
-	   return array(
-	      'data'     => curl_exec($ch),
-	      'redirect' => curl_getinfo($ch, CURLINFO_REDIRECT_URL),
-	      'status'   => curl_getinfo($ch, CURLINFO_HTTP_CODE)
-	   );
-	}
-
+   public static function http_request($url, $post = false, $headers = false, $timeout = 2) {
+      $ch = curl_init();
+      curl_setopt($ch, CURLOPT_URL, $url);
+      if ( $post ) {
+         curl_setopt($ch, CURLOPT_POST,       true);
+         curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+      }
+      if ( $headers ) {
+         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+      }
+      curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+      curl_setopt($ch, CURLOPT_TIMEOUT,        $timeout);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+      curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
+      return array(
+         'data'     => curl_exec($ch),
+         'redirect' => curl_getinfo($ch, CURLINFO_REDIRECT_URL),
+         'status'   => curl_getinfo($ch, CURLINFO_HTTP_CODE)
+      );
+   }
 
    /*
       DISCORD FUNCTIONS.
@@ -74,7 +72,6 @@ class website {
       ));
       return ($request['status'] === 200 ? json_decode($request['data'], true) : false);
    }
-
 
 }
 ?>
