@@ -11,8 +11,8 @@
    </head>
    <body>
 
-      <?php if ( !empty($_SESSION) ) :?>
-         <p>Hello <?php echo $_SESSION['discord-username'];?>, <a href="logout.php">logout</a></p>
+      <?php if ( isset($_SESSION['discord']) ) :?>
+         <p>Hello <?php echo $_SESSION['discord']['username'];?>, <a href="logout.php">logout</a></p>
          <pre><?php print_r($_SESSION);?></pre>
       <?php else:?>
          <a href="login.php">login with discord</a>
