@@ -1,6 +1,6 @@
 <?php
 require_once('includes/config.php');
-if ( isset($_SESSION['discord']) ) {
+if ( isset($_SESSION['discord']) || isset($_GET['error']) ) {
    website::website_redirect($website['url']);
 }
 else if ( isset($_GET['code']) ) {
